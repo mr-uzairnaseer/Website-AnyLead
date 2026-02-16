@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyLead - Tele-Calling CRM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#08a698',
+                        light: '#f4f4f6',
+                        dark: '#111',
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'floatUpDown 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        floatUpDown: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Minimal custom CSS for arrow pseudo-element and mobile dropdown max-height transition */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 8px solid #fff;
+            filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.04));
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 400px;
+            padding: 5px 0;
+        }
+
+        /* Responsive hero heading */
+        @media (max-width: 960px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans text-base leading-relaxed bg-white overflow-x-hidden antialiased">
+    <!-- Navbar -->
+    <nav class="bg-white py-5 px-5 shadow-sm sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-[15px] flex justify-between items-center">
+            <div class="flex-1 pt-2">
+                <a href="./" aria-label="AnyLead Home">
+                    <img src="assets/logo.svg" class="h-10 w-auto object-contain" alt="AnyLead Logo" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation (Centered) -->
+            <div class="hidden md:flex flex-1 justify-center items-center">
+                <ul class="flex items-center">
+                    <li class="relative">
+                        <a href="features.html"
+                            class="px-5 py-2.5 block font-semibold transition-colors duration-300 text-gray-700 hover:text-primary">Platform</a>
+                    </li>
+                    <li class="relative">
+                        <a href="#pricing"
+                            class="px-5 py-2.5 block font-semibold transition-colors duration-300 text-gray-700 hover:text-primary">WhyUs</a>
+                    </li>
+                    <li class="relative">
+                        <a href="industries.html"
+                            class="px-5 py-2.5 block font-semibold transition-colors duration-300 text-gray-700 hover:text-primary">Customers</a>
+                    </li>
+                    <li class="relative dropdown group">
+                        <a href="#" aria-haspopup="true" aria-expanded="false"
+                            class="flex items-center cursor-pointer px-5 py-2.5 font-semibold transition-colors duration-300 text-gray-700 hover:text-primary dropdown-toggle">
+                            Resources
+                            <i class="fas fa-chevron-down transition-transform duration-300 text-xs ml-1 group-hover:rotate-180"
+                                aria-hidden="true"></i>
+                        </a>
+                        <ul class="absolute top-full left-1/2 -translate-x-1/2 translate-y-2.5 bg-white min-w-[320px] w-[320px] max-w-[340px] shadow-2xl rounded-2xl p-3 opacity-0 invisible transition-all duration-300 ease-out z-[1000] border border-gray-100 mt-2.5 flex flex-col gap-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 dropdown-menu"
+                            aria-label="Resources submenu">
+                            <li>
+                                <a href="blogs/blog-telecalling-crm.html"
+                                    class="group flex items-center gap-3.5 p-3.5 text-gray-700 font-medium text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-br hover:from-primary/8 hover:to-primary/4 hover:translate-x-1">
+                                    <div
+                                        class="w-11 h-11 flex items-center justify-center bg-gradient-to-br from-primary/12 to-primary/6 rounded-xl flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-105">
+                                        <i class="fas fa-headset text-lg text-primary group-hover:text-white"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span
+                                            class="font-semibold text-sm text-gray-800 group-hover:text-primary">Maximizing
+                                            Sales with AnyLead</span>
+                                        <span class="text-xs text-gray-600 font-normal">Boost your telecalling
+                                            efficiency</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blogs/blog-whatsapp-integration.html"
+                                    class="group flex items-center gap-3.5 p-3.5 text-gray-700 font-medium text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-br hover:from-primary/8 hover:to-primary/4 hover:translate-x-1">
+                                    <div
+                                        class="w-11 h-11 flex items-center justify-center bg-gradient-to-br from-primary/12 to-primary/6 rounded-xl flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-105">
+                                        <i class="fab fa-whatsapp text-lg text-primary group-hover:text-white"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span
+                                            class="font-semibold text-sm text-gray-800 group-hover:text-primary">WhatsApp
+                                            Integration</span>
+                                        <span class="text-xs text-gray-600 font-normal">Connect with customers
+                                            seamlessly</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blogs/blog-lead-management.html"
+                                    class="group flex items-center gap-3.5 p-3.5 text-gray-700 font-medium text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-br hover:from-primary/8 hover:to-primary/4 hover:translate-x-1">
+                                    <div
+                                        class="w-11 h-11 flex items-center justify-center bg-gradient-to-br from-primary/12 to-primary/6 rounded-xl flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-105">
+                                        <i class="fas fa-users text-lg text-primary group-hover:text-white"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="font-semibold text-sm text-gray-800 group-hover:text-primary">Lead
+                                            Management</span>
+                                        <span class="text-xs text-gray-600 font-normal">Best practices for lead
+                                            handling</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blogs/blog-sales-automation.html"
+                                    class="group flex items-center gap-3.5 p-3.5 text-gray-700 font-medium text-sm transition-all duration-300 rounded-xl hover:bg-gradient-to-br hover:from-primary/8 hover:to-primary/4 hover:translate-x-1">
+                                    <div
+                                        class="w-11 h-11 flex items-center justify-center bg-gradient-to-br from-primary/12 to-primary/6 rounded-xl flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-105">
+                                        <i class="fas fa-robot text-lg text-primary group-hover:text-white"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="font-semibold text-sm text-gray-800 group-hover:text-primary">Sales
+                                            Automation</span>
+                                        <span class="text-xs text-gray-600 font-normal">Automate your sales
+                                            workflow</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="relative">
+                        <a href="industries.html"
+                            class="px-5 py-2.5 block font-semibold transition-colors duration-300 text-gray-700 hover:text-primary">Customers</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Desktop Actions (Right) -->
+            <div class="hidden md:flex flex-1 justify-end items-center gap-3">
+                <a class="inline-block py-3 px-5 bg-light text-gray-700 font-semibold border-none rounded-xl cursor-pointer text-center transition-opacity duration-500 hover:opacity-80"
+                    href="signup.html">Log in</a>
+                <a class="inline-block py-3 px-5 bg-primary text-white font-semibold border-none rounded-xl cursor-pointer text-center transition-opacity duration-500 hover:opacity-80"
+                    href="signup.html">Request a demo</a>
+            </div>
+            <!-- Hamburger Button -->
+            <button class="md:hidden bg-transparent border-none cursor-pointer p-2.5 z-[1000] hamburger-button"
+                aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger-line w-[30px] h-[3px] bg-gray-700 mx-auto mb-[6px] last:mb-0"></div>
+                <div class="hamburger-line w-[30px] h-[3px] bg-gray-700 mx-auto mb-[6px] last:mb-0"></div>
+                <div class="hamburger-line w-[30px] h-[3px] bg-gray-700 mx-auto mb-[6px] last:mb-0"></div>
+            </button>
+            <!-- Mobile Menu -->
+            <div class="fixed top-0 right-[-280px] w-[280px] h-full z-40 bg-white shadow-2xl transition-all duration-300 ease-in-out overflow-y-auto md:hidden mobile-menu"
+                aria-hidden="true">
+                <ul class="mt-24 px-5">
+                    <li class="my-1.25 border-b border-gray-100 last:border-none">
+                        <a href="features.html"
+                            class="text-base transition duration-300 py-3.75 px-2.5 block hover:text-primary">Features</a>
+                    </li>
+                    <li class="my-1.25 border-b border-gray-100 last:border-none">
+                        <a href="#pricing"
+                            class="text-base transition duration-300 py-3.75 px-2.5 block hover:text-primary">Pricing</a>
+                    </li>
+                    <li class="my-1.25 border-b border-gray-100 last:border-none">
+                        <a href="industries.html"
+                            class="text-base transition duration-300 py-3.75 px-2.5 block hover:text-primary">Industries</a>
+                    </li>
+                    <li class="relative dropdown border-b border-gray-100 mobile-dropdown">
+                        <a href="#" aria-haspopup="true" aria-expanded="false"
+                            class="flex items-center justify-between w-full text-base transition duration-300 py-3.75 px-2.5 block hover:text-primary dropdown-toggle">
+                            Coming Updates
+                            <i class="fas fa-chevron-down transition-transform duration-300 text-xs"
+                                aria-hidden="true"></i>
+                        </a>
+                        <ul class="mobile-dropdown-menu bg-primary/5 mt-1.25" aria-label="Coming Updates submenu">
+                            <li class="border-b border-transparent last:border-none">
+                                <a href="blogs/blog-telecalling-crm.html"
+                                    class="relative text-sm py-2.5 pl-8 pr-5 block transition duration-300 hover:bg-primary/10 hover:pl-10"><i
+                                        class="fas fa-headset mr-2.5 inline-block w-4" aria-hidden="true"></i>
+                                    Maximizing Sales with AnyLead</a>
+                            </li>
+                            <li class="border-b border-transparent last:border-none">
+                                <a href="blogs/blog-whatsapp-integration.html"
+                                    class="relative text-sm py-2.5 pl-8 pr-5 block transition duration-300 hover:bg-primary/10 hover:pl-10"><i
+                                        class="fab fa-whatsapp mr-2.5 inline-block w-4" aria-hidden="true"></i> WhatsApp
+                                    Integration</a>
+                            </li>
+                            <li class="border-b border-transparent last:border-none">
+                                <a href="blogs/blog-lead-management.html"
+                                    class="relative text-sm py-2.5 pl-8 pr-5 block transition duration-300 hover:bg-primary/10 hover:pl-10"><i
+                                        class="fas fa-users mr-2.5 inline-block w-4" aria-hidden="true"></i> Lead
+                                    Management</a>
+                            </li>
+                            <li>
+                                <a href="blogs/blog-sales-automation.html"
+                                    class="relative text-sm py-2.5 pl-8 pr-5 block transition duration-300 hover:bg-primary/10 hover:pl-10"><i
+                                        class="fas fa-robot mr-2.5 inline-block w-4" aria-hidden="true"></i> Sales
+                                    Automation</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="my-1.25 border-b border-gray-100 last:border-none">
+                        <a class="inline-block py-3 px-5 bg-light text-gray-700 font-semibold border-none rounded-xl cursor-pointer text-center transition-opacity duration-500 hover:opacity-80 w-full"
+                            href="login.html">
+                            <i class="fas fa-user mr-2.5" aria-hidden="true"></i> Log In
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero mt-10 mb-12">
+        <div
+            class="max-w-[1400px] mx-auto px-[15px] bg-no-repeat bg-bottom bg-[length:330px_380px] bg-[url('assets/Image-mobile.png')] h-[770px] md:bg-[url('assets/Images.png')] md:bg-contain md:bg-[position:center_bottom] md:h-[530px]">
+            <div class="hero-content relative z-10 w-full lg:w-[70%] text-center lg:text-left">
+                <h1 class="text-[3rem] font-semibold leading-tight text-dark mt-10 mb-5 lg:mt-0">Lead-Powered
+                    Tele-Calling CRM</h1>
+                <p class="hero-text text-gray-700 mb-5 w-full lg:w-[70%] text-center lg:text-left">Empowering Pakistani
+                    businesses to streamline their entire sales operations with smart calling, WhatsApp integration, and
+                    intelligent automation - from lead capture to closure, all in one unified platform</p>
+                <div class="hero-buttons flex flex-col sm:flex-row gap-4">
+                    <a class="inline-block py-3 px-8 bg-primary text-white font-semibold border-none rounded-xl cursor-pointer text-center transition-opacity duration-500 hover:opacity-80"
+                        href="#pricing">Get Started</a>
+                    <a class="inline-block py-3 px-8 bg-light text-gray-700 font-semibold border-none rounded-xl cursor-pointer text-center transition-opacity duration-500 hover:opacity-80 book-demo-btn"
+                        href="#">
+                        <i class="fas fa-laptop mr-2.5" aria-hidden="true"></i> Book a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced JS for mobile menu toggle and dropdowns
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            const bookDemoBtn = document.querySelector('.book-demo-btn');
+
+            // Hamburger toggle
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', () => {
+                    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !isExpanded);
+                    mobileMenu.setAttribute('aria-hidden', isExpanded);
+
+                    mobileMenu.classList.toggle('right-0');
+                    mobileMenu.classList.toggle('right-[-280px]');
+                });
+            }
+
+            // Mobile dropdown toggles
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.dropdown');
+                    if (dropdown) {
+                        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', !isExpanded);
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close mobile menu on outside click
+            document.addEventListener('click', (e) => {
+                if (mobileMenu && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    // Only close if it's open
+                    if (mobileMenu.classList.contains('right-0')) {
+                        mobileMenu.classList.remove('right-0');
+                        mobileMenu.classList.add('right-[-280px]');
+                        document.querySelectorAll('.dropdown').forEach(d => {
+                            d.classList.remove('active');
+                            // Reset aria states for dropdowns
+                            const toggle = d.querySelector('.dropdown-toggle');
+                            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        });
+
+                        // Reset hamburger state
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+
+            // Book a Demo handler
+            if (bookDemoBtn) {
+                bookDemoBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Check if the modal function exists globally
+                    if (typeof window.openBookDemoModal === 'function') {
+                        window.openBookDemoModal();
+                    } else {
+                        console.log('Book a Demo modal trigger: functionality pending implementation.');
+                        // Fallback behavior if needed, e.g., alert("Demo booking coming soon!");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
