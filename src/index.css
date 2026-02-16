@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Mobile dropdown styles from original */
+  .mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-dropdown.active .mobile-dropdown-menu {
+    max-height: 400px;
+    padding: 5px 0;
+  }
+}
+
+/* Custom styles that are hard to do with just utilities or pseudo-elements without configuration */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 8px solid #fff;
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.04));
+}
+
+/* Responsive hero heading override if needed, though Tailwind classes usually handle this better. 
+   Original: @media (max-width: 960px) { .hero h1 { font-size: 2.5rem; } }
+   I will handle this in the component with md:text-[...].
+*/
